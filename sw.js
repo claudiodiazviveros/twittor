@@ -15,7 +15,6 @@ const CACHE_INMUTABLE = [
     'js/libs/jquery.js'
 ];
 const CACHE_STATIC = [
-    '/',
     'index.html',
     'css/style.css',
     'img/favicon.ico',
