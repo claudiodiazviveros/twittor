@@ -15,7 +15,7 @@ const CacheFirstUpdateNetwork = function (request, cacheName) {
                     return response.clone();
 
                 } else {
-                    return response;
+                    return response.clone();
                 }
             });
         }
