@@ -57,7 +57,7 @@ const NetworkFirstCacheFallback = function name(request, cacheName) {
 
 
 const test = function () {
-    fetch('/api/posts.json').then(response => {
+    fetch('api/posts.json').then(response => {
         console.log(response);
     });
 }
