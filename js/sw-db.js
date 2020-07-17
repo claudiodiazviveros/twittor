@@ -15,7 +15,7 @@ const addPost = function (text) {
     };
 
     db.put(post).then(status => {
-        console.log('Successfully posted: ', status);
+        console.log('Successfully posted database: ', status);
     }).catch(ex => {
         console.log(ex);
     });   
