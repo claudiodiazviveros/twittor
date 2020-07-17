@@ -36,11 +36,17 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
 
     if (request.clone().method === 'POST') {
         
-        request.clone().text().then(body => {
-            var bodyObj = JSON.parse(body);
-            addPost(bodyObj);
-        });
-        return fetch(request);
+        if (self.registration.sync) {
+
+            request.clone().text().then(body => {
+                var bodyObj = JSON.parse(body);
+                return addPost(bodyObj);
+            });
+
+        } else {
+
+            return fetch(request);
+        }
 
     } else {
         

@@ -14,8 +14,14 @@ const addPost = function (text) {
         completed: false
     };
 
-    db.put(post).then(status => {
-        console.log('Successfully posted database: ', status);
+    return db.put(post).then(status => {
+
+        self.ServiceWorkerRegistration.sync.register('Task_NewPost');
+
+        const response = { ok: true, offline: true }
+
+        return new Response(JSON.stringify(response));
+
     }).catch(ex => {
         console.error(ex);
     });   
