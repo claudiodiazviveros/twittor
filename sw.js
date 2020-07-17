@@ -72,11 +72,16 @@ self.addEventListener('fetch', event => {
     let responseCache;
 
     if (event.request.url.includes('/api')) {        
+
         // Strategy Network first and cache fallback update.
+        console.log(event.request.url);
         responseCache = NetworkFirstCacheFallback(event.request, CACHE_DYNAMIC_NAME);
+
     } else {     
+
         // Strategy Cache first and update from the network.
         responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
+
     }
 
     event.respondWith( responseCache );

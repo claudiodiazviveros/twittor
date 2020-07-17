@@ -151,7 +151,6 @@ postBtn.on('click', function() {
 });
 
 
-
 const test = function () {
     fetch('api/posts.json').then(response => {
         console.log(response);
