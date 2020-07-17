@@ -67,18 +67,13 @@ self.addEventListener('activate', event => {
 })
 
 // Start listening function in event 'fetch'.
-self.addEventListener('fetch', event => {
-    
+self.addEventListener('fetch', event => {  
     let responseCache;
-    console.log(event.request.url);
 
-    if (event.request.url.includes('/api')) {
-        
+    if (event.request.url.includes('/api')) {        
         // Strategy Network first and cache fallback update.
         responseCache = NetworkFirstCacheFallback(event.request, CACHE_DYNAMIC_NAME);
-
-    } else {
-        
+    } else {     
         // Strategy Cache first and update from the network.
         responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
     }
