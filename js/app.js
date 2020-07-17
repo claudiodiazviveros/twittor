@@ -127,8 +127,27 @@ postBtn.on('click', function() {
         return;
     }
 
-    crearMensajeHTML( mensaje, usuario );
+    var data = {
+        message: mensaje,
+        user: usuario
+    };
 
+    fetch('api', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response => { 
+        response.json() 
+    })
+    .then(response => {
+        console.log('app.js', response);
+    }). catch(ex => {
+        console.log('app.js', ex);
+    });
+
+    crearMensajeHTML( mensaje, usuario );
 });
 
 
