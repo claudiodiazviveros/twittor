@@ -34,6 +34,9 @@ const CacheFirstUpdateNetwork = function (request, cacheName) {
 // function strategy Network first and cache fallback update.
 const NetworkFirstCacheFallback = function (request, cacheName) {
 
+    console.log('/NetworkFirstCacheFallback URL', request.clone().url, request.clone().method, );
+
+
     if (request.clone().method === 'POST') {
         
         request.clone().text().then(body => {
