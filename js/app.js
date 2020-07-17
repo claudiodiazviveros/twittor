@@ -130,3 +130,12 @@ postBtn.on('click', function() {
     crearMensajeHTML( mensaje, usuario );
 
 });
+
+
+
+const test = function () {
+    fetch('api/posts.json').then(response => {
+        console.log(response);
+    });
+}
+test();

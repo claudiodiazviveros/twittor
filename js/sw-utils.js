@@ -49,11 +49,3 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
         return caches.match(request);
     });
 }
-
-
-const test = function () {
-    fetch('api/posts.json').then(response => {
-        console.log(response);
-    });
-}
-

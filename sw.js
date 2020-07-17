@@ -70,9 +70,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
     
     let responseCache;
-
     console.log(event.request.url);
-
 
     if (event.request.url.includes('/api')) {
         
@@ -83,7 +81,6 @@ self.addEventListener('fetch', event => {
         
         // Strategy Cache first and update from the network.
         responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
-
     }
 
     event.respondWith( responseCache );
@@ -99,6 +96,3 @@ self.addEventListener('push', event => {
     console.log("Receive notification, event 'push'.");
     addPost("Receive notification, event 'push'.");
 })
-
-
-test();
