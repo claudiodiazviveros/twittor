@@ -69,8 +69,19 @@ self.addEventListener('activate', event => {
 // Start listening function in event 'fetch'.
 self.addEventListener('fetch', event => {
     
-    // Strategy Cache first and Update from the network.
-    let responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
+    let responseCache;
+
+    if (event.request.url.includes('/api')) {
+        
+        // Strategy Network first and cache fallback update.
+        responseCache = NetworkFirstCacheFallback(event.request, CACHE_DYNAMIC_NAME);
+
+    } else {
+        
+        // Strategy Cache first and update from the network.
+        responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
+
+    }
 
     event.respondWith( responseCache );
 })
@@ -85,3 +96,6 @@ self.addEventListener('push', event => {
     console.log("Receive notification, event 'push'.");
     addPost("Receive notification, event 'push'.");
 })
+
+
+test();
