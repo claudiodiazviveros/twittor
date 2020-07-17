@@ -16,7 +16,7 @@ const addPost = function (text) {
 
     return db.put(post).then(status => {
 
-        self.ServiceWorkerRegistration.sync.register('Task_NewPost');
+        self.registration.sync.register('Task_NewPost');
 
         const response = { ok: true, offline: true }
 
