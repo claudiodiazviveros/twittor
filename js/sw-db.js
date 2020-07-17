@@ -1,10 +1,8 @@
 const db = new PouchDB('postdb');
 
-// Listen to changes in the database.
-db.changes({ since: 'now', live: true }).on('change', databaseOnChange);
 
 // Changes in the database.
-databaseOnChange = function () {
+const databaseOnChange = function () {
     
 }
 
@@ -34,3 +32,6 @@ const readPendingPosts = function () {
         console.log(items);
     });
 }
+
+// Listen to changes in the database.
+db.changes({ since: 'now', live: true }).on('change', databaseOnChange);
