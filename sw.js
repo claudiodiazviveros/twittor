@@ -80,7 +80,6 @@ self.addEventListener('sync', event => {
     console.log("Reestablish online connection, event 'sync'.");
 })
 
-
 // Start listening function in event 'push'. Receive notification.
 self.addEventListener('push', event => {
     console.log("Receive notification, event 'push'.");
