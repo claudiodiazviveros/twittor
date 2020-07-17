@@ -4,7 +4,7 @@ const db = new PouchDB('postdb');
 db.changes({ since: 'now', live: true }).on('change', databaseOnChange);
 
 // Changes in the database.
-const databaseOnChange = function () {
+databaseOnChange = function () {
     
 }
 
