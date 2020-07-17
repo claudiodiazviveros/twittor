@@ -13,6 +13,7 @@ const CACHE_INMUTABLE = [
     'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
     'https://use.fontawesome.com/releases/v5.3.1/webfonts/fa-solid-900.woff2',
     'https://use.fontawesome.com/releases/v5.3.1/webfonts/fa-brands-400.woff',
+    'https://cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js',
     'css/animate.css',
     'js/libs/jquery.js'
 ];
