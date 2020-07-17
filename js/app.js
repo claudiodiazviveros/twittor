@@ -140,9 +140,6 @@ postBtn.on('click', function() {
         body: JSON.stringify(data)
     }).then(response => { 
         response.json() 
-    })
-    .then(response => {
-        console.log('app.js', response);
     }). catch(ex => {
         console.log('app.js', ex);
     });
