@@ -7,11 +7,9 @@ const CacheFirstUpdateNetwork = function (request, cacheName) {
             
             fetch(request).then(response => {
                 if (response.ok) {
-
                     caches.open(cacheName).then( cache => {
                         cache.put(request, response.clone());
                     });
-
                 }
             });            
             return itemCache;
@@ -20,12 +18,10 @@ const CacheFirstUpdateNetwork = function (request, cacheName) {
 
             return fetch(request).then(response => {
                 if (response.ok) {
-
                     caches.open(cacheName).then( cache => {
                         cache.put(request, response.clone());
                     });
                     return response.clone();
-
                 } else {
                     return response.clone();
                 }
@@ -52,7 +48,6 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
     }).catch(ex => {
         return caches.match(request);
     });
-
 }
 
 
