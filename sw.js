@@ -1,7 +1,9 @@
+importScripts('https://cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js');
+importScripts('js/sw-db.js');
 importScripts('js/sw-utils.js');
 
 const CACHE_INMUTABLE_NAME = 'inmutable-v1';
-const CACHE_STATIC_NAME    = 'static-v3';
+const CACHE_STATIC_NAME    = 'static-v1';
 const CACHE_DYNAMIC_NAME   = 'dynamic-v1';
 
 const CACHE_INMUTABLE = [
@@ -71,4 +73,16 @@ self.addEventListener('fetch', event => {
     let responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
 
     event.respondWith( responseCache );
+})
+
+// Start listening function in event 'sync'. Reestablish online connection.
+self.addEventListener('sync', event => {
+    console.log("Reestablish online connection, event 'sync'.");
+})
+
+
+// Start listening function in event 'push'. Receive notification.
+self.addEventListener('push', event => {
+    console.log("Receive notification, event 'push'.");
+    addPost(event);
 })
