@@ -38,13 +38,12 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
         
         if (self.registration.sync) {
 
-            request.clone().text().then(body => {
+            return request.clone().text().then(body => {
                 var bodyObj = JSON.parse(body);
                 return addPost(bodyObj);
             });
 
         } else {
-
             return fetch(request);
         }
 
