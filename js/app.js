@@ -135,7 +135,7 @@ postBtn.on('click', function() {
 
 const test = function () {
     fetch('api/posts.json').then(response => {
-        response.forEach(element => console.log(element) );
+        console.log(response);
     });
 }
 test();
