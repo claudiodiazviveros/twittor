@@ -3,7 +3,7 @@ importScripts('js/sw-db.js');
 importScripts('js/sw-utils.js');
 
 const CACHE_INMUTABLE_NAME = 'inmutable-v1';
-const CACHE_STATIC_NAME    = 'static-v2';
+const CACHE_STATIC_NAME    = 'static-v1';
 const CACHE_DYNAMIC_NAME   = 'dynamic-v1';
 
 const CACHE_INMUTABLE = [
@@ -33,6 +33,7 @@ const CACHE_STATIC = [
 
 // Start listening function in event 'install'. Save assets and cache.
 self.addEventListener('install', event => { 
+    console.log('event install');
 
     const cacheInmutable = caches.open(CACHE_INMUTABLE_NAME).then(cache => {
         return cache.addAll(CACHE_INMUTABLE).then(() => {
@@ -51,6 +52,7 @@ self.addEventListener('install', event => {
 
 // Start listening function in event 'activate'. Remove old service workers.
 self.addEventListener('activate', event => {
+    console.log('event activate');
 
     const cacheStatic = caches.keys().then(keys => {
         keys.forEach(key => {
@@ -94,5 +96,4 @@ self.addEventListener('sync', event => {
 // Start listening function in event 'push'. Receive notification.
 self.addEventListener('push', event => {
     console.log("Receive notification, event 'push'.");
-    addPost("Receive notification, event 'push'.");
 })
