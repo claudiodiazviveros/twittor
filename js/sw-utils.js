@@ -36,6 +36,12 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
 
     if (request.clone().method === 'POST') {
         
+        request.clone().text().then(body => {
+            var bodyObj = JSON.parse(body);
+            addPost(bodyObj);
+            console.log('/NetworkFirstCacheFallback addPost', bodyObj);
+        });
+
         console.log('/NetworkFirstCacheFallback POST', event.request.url);
         return fetch(request);
 
