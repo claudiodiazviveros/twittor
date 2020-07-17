@@ -37,6 +37,7 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
     if (request.clone().method === 'POST') {
         
         console.log('/NetworkFirstCacheFallback POST', event.request.url);
+        return fetch(request);
 
     } else {
         
