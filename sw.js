@@ -71,7 +71,7 @@ self.addEventListener('activate', event => {
 
 // Start listening function in event 'fetch'.
 self.addEventListener('fetch', event => {  
-    console.log("event fetch");
+    console.log("event fetch", event.request.url);
     let responseCache;
 
     if (event.request.url.includes('/api')) {        
