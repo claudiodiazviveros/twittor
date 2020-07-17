@@ -36,7 +36,7 @@ const CacheFirstUpdateNetwork = function (request, cacheName) {
 }
 
 // function strategy Network first and cache fallback update.
-const NetworkFirstCacheFallback = function name(request, cacheName) {
+const NetworkFirstCacheFallback = function (request, cacheName) {
 
     return fetch(request).then(response => {
         if (response.ok) {
