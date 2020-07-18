@@ -71,7 +71,6 @@ self.addEventListener('activate', event => {
 
 // Start listening function in event 'fetch'.
 self.addEventListener('fetch', event => {  
-    console.log("event fetch", event.request.url);
     let responseCache;
 
     if (event.request.url.includes('/api')) {        
@@ -83,7 +82,6 @@ self.addEventListener('fetch', event => {
 
         // Strategy Cache first and update from the network.
         responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
-
     }
 
     event.respondWith( responseCache );
@@ -95,6 +93,9 @@ self.addEventListener('sync', event => {
 
     if (event.tag === 'Task_NewPost') {
         
+        const request = readPendingPosts();
+
+        event.waitUntil(request);
     }
 })
 

@@ -36,8 +36,6 @@ const NetworkFirstCacheFallback = function (request, cacheName) {
 
     if (request.clone().method === 'POST') {
         
-        console.log('self.registration.sync', self.registration.sync);
-
         if (self.registration.sync) {
 
             return request.clone().text().then(body => {
