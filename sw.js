@@ -91,7 +91,11 @@ self.addEventListener('fetch', event => {
 
 // Start listening function in event 'sync'. Reestablish online connection.
 self.addEventListener('sync', event => {
-    console.log("Reestablish online connection, event 'sync'.");
+    console.log("Reestablish online connection, event 'sync'.", event);
+
+    if (event.tag === 'Task_NewPost') {
+        
+    }
 })
 
 // Start listening function in event 'push'. Receive notification.
