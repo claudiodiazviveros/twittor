@@ -14,6 +14,8 @@ const CACHE_INMUTABLE = [
     'https://use.fontawesome.com/releases/v5.3.1/webfonts/fa-solid-900.woff2',
     'https://use.fontawesome.com/releases/v5.3.1/webfonts/fa-brands-400.woff',
     'https://cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js',
+    'https://cdn.jsdelivr.net/gh/dmuy/Material-Toast/mdtoast.min.css',
+    'https://cdn.jsdelivr.net/gh/dmuy/Material-Toast/mdtoast.min.js',
     'css/animate.css',
     'js/libs/jquery.js'
 ];

@@ -159,9 +159,21 @@ test();
 const statusWifi = function () {
 
     if (navigator.onLine) {
-        console.log('online');
+
+        $.mdtoast('Online.', { 
+            interaction: true,
+            interactionTimeout: 10000, 
+            actionText: "Ok"
+        });
+
     } else {
-        console.log('offline');
+        
+        $.mdtoast('Offline.', { 
+            interaction: true,
+            interactionTimeout: 10000, 
+            actionText: "Ok"
+        });
+
     }
 
 }
