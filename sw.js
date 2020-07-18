@@ -63,7 +63,7 @@ self.addEventListener('activate', event => {
         });
     });
 
-    event.waitUntil( cacheStatic );
+    event.waitUntil(cacheStatic);
 })
 
 // Start listening function in event 'fetch'.
@@ -78,7 +78,7 @@ self.addEventListener('fetch', event => {
         responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
     }
 
-    event.respondWith( responseCache );
+    event.respondWith(responseCache);
 })
 
 // Start listening function in event 'sync'. Reestablish online connection.
