@@ -154,3 +154,17 @@ const test = function () {
     });
 }
 test();
+
+
+const statusWifi = function () {
+
+    if (navigator.onLine) {
+        console.log('online');
+    } else {
+        console.log('offline');
+    }
+
+}
+
+window.addEventListener('online', statusWifi);
+window.addEventListener('offline', statusWifi);
