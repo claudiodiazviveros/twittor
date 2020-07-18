@@ -160,19 +160,13 @@ const statusWifi = function () {
 
     if (navigator.onLine) {
 
-        $.mdtoast('Online.', { 
-            interaction: true,
-            interactionTimeout: 10000, 
-            actionText: "Ok"
-        });
+        var myToast = mdtoast('Online.', { interaction: true, interactionTimeout: 1000, actionText: "Ok" }); 
+        myToast.show();
 
     } else {
         
-        $.mdtoast('Offline.', { 
-            interaction: true,
-            interactionTimeout: 10000, 
-            actionText: "Ok"
-        });
+        var myToast = mdtoast('Offline.', { interaction: true, interactionTimeout: 1000, actionText: "Ok" }); 
+        myToast.show();
 
     }
 
