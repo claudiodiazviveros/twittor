@@ -34,20 +34,18 @@ const removePost = function (post) {
 
 // Read pending post.
 const readPendingPosts = function () {
-
     const posts = [];
 
     return db.allDocs({ include_docs: true, descending: false }).then(items => {
 
         items.rows.forEach(row => {
-            
+                       
             const doc = row.doc;
             const fechProm = fetch('api', { 
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(doc) 
             }).then(response => {
-
                 return db.remove(doc);
             });
 

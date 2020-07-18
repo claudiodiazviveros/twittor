@@ -28,13 +28,12 @@ const CACHE_STATIC = [
     'img/avatars/wolverine.jpg',
     'manifest.json',
     'js/sw-utils.js',
+    'js/sw-db.js',
     'js/app.js'
 ];
 
 // Start listening function in event 'install'. Save assets and cache.
 self.addEventListener('install', event => { 
-    console.log('event install');
-
     const cacheInmutable = caches.open(CACHE_INMUTABLE_NAME).then(cache => {
         return cache.addAll(CACHE_INMUTABLE).then(() => {
             console.log('Store ' + CACHE_INMUTABLE_NAME);
@@ -52,8 +51,6 @@ self.addEventListener('install', event => {
 
 // Start listening function in event 'activate'. Remove old service workers.
 self.addEventListener('activate', event => {
-    console.log('event activate');
-
     const cacheStatic = caches.keys().then(keys => {
         keys.forEach(key => {
             if (key.includes('static-v') && key !== CACHE_STATIC_NAME) {
@@ -74,12 +71,9 @@ self.addEventListener('fetch', event => {
     let responseCache;
 
     if (event.request.url.includes('/api')) {        
-
         // Strategy Network first and cache fallback update.
         responseCache = NetworkFirstCacheFallback(event.request, CACHE_DYNAMIC_NAME);
-
     } else {     
-
         // Strategy Cache first and update from the network.
         responseCache = CacheFirstUpdateNetwork(event.request, CACHE_STATIC_NAME);
     }
@@ -89,10 +83,7 @@ self.addEventListener('fetch', event => {
 
 // Start listening function in event 'sync'. Reestablish online connection.
 self.addEventListener('sync', event => {
-    console.log("Reestablish online connection, event 'sync'.", event);
-
-    if (event.tag === 'Task_NewPost') {
-        
+    if (event.tag === 'Task_NewPost') {       
         const request = readPendingPosts();
 
         event.waitUntil(request);
